@@ -1,8 +1,0 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
-    <PointCollection x:Key="OsdLeftArrow">0,0 0,30 35,30 50,15 35,0</PointCollection>
-    <PointCollection x:Key="OsdRightArrow">15,0 0,15 15,30 50,30 50,0</PointCollection>
-    <PointCollection x:Key="OsdUpArrow">0,0 0,35 15,50 30,35 30,0</PointCollection>
-    <PointCollection x:Key="OsdDownArrow">0,15 0,50 30,50 30,15 15,0</PointCollection>
-</ResourceDictionary>
