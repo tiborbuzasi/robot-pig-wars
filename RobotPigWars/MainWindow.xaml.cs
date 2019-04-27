@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using RobotPigWars.GUI;
+using RobotPigWars.Logic;
 
 namespace RobotPigWars
 {
@@ -81,17 +82,49 @@ namespace RobotPigWars
 
         private void OsdAction_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            
+            OsdActionButton Button = (OsdActionButton) sender;
+            if (Button.Weapon == OsdActionButton.Weapons.Gun)
+            {
+                ActionBox.SetAction(Actions.Gun);
+            }
+            else if (Button.Weapon == OsdActionButton.Weapons.Fist)
+            {
+                ActionBox.SetAction(Actions.Fist);
+            }
         }
 
         private void OsdTurn_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            
+            OsdTurnButton Button = (OsdTurnButton) sender;
+            if (Button.Direction == OsdTurnButton.Directions.Left)
+            {
+                ActionBox.SetAction(Actions.TurnLeft);
+            }
+            else if (Button.Direction == OsdTurnButton.Directions.Right)
+            {
+                ActionBox.SetAction(Actions.TurnRight);
+            }
         }
 
         private void OsdArrow_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
+            OsdArrowButton Button = (OsdArrowButton) sender;
+            if (Button.Direction == OsdArrowButton.Directions.Up)
+            {
+                ActionBox.SetAction(Actions.Forward);
+            }
+            else if (Button.Direction == OsdArrowButton.Directions.Down)
+            {
+                ActionBox.SetAction(Actions.Backward);
+            }
+            else if (Button.Direction == OsdArrowButton.Directions.Left)
+            {
+                ActionBox.SetAction(Actions.MoveLeft);
+            }
+            else if (Button.Direction == OsdArrowButton.Directions.Right)
+            {
+                ActionBox.SetAction(Actions.MoveRight);
+            }
         }
 
         private void WindowMaximizeButton_SetImage(WindowTitleBarButton Button)
@@ -105,6 +138,11 @@ namespace RobotPigWars
                 Button.Image = (DrawingCollection) Application.Current.Resources["WindowMaximizeImage"];
             }
 
+        }
+
+        private void ProcessButton_Click(object sender, RoutedEventArgs e)
+        {
+            ActionBox.DisplayType = OsdActionBox.DisplayTypes.AllPlayers;
         }
     }
 }

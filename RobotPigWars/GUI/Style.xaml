@@ -59,4 +59,40 @@
         <Setter Property="StrokeThickness" Value="2" />
         <Setter Property="Width" Value="57" />
     </Style>
+    
+    <!-- Style for OSD Info Boxes (e.g. Lives and Steps) -->
+    <Style x:Key="OsdInfoBox" TargetType="Rectangle">
+        <Setter Property="Margin" Value="10,7" />
+        <Setter Property="Stroke" Value="Black" />
+        <Setter Property="StrokeThickness" Value="2" />
+    </Style>
+
+    <!-- Style for OSD Info Box Titles (e.g. Lives and Steps) -->
+    <Style x:Key="OsdInfoBoxTitle" TargetType="Label">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Margin" Value="17,10" />
+    </Style>
+
+    <!-- Style for OSD Action Info Boxes -->
+    <Style x:Key="OsdActionInfoBox" TargetType="Rectangle">
+        <Setter Property="Fill" Value="#01FFFFFF" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Stroke" Value="Black" />
+        <Setter Property="StrokeThickness" Value="1.5" />
+        <Setter Property="Width" Value="40" />
+    </Style>
+
+    <!-- Style for OSD Action Box Player Highlights -->
+    <Style x:Key="OsdActionBoxPlayerHighlight" TargetType="Rectangle">
+        <Setter Property="Height" Value="48" />
+        <Setter Property="Fill" Value="DarkGray" />
+    </Style>
+
+    <!-- Style for OSD Action Box Step Markers -->
+    <Style x:Key="OsdActionBoxStepMarker" TargetType="Rectangle">
+        <Setter Property="Width" Value="48" />
+        <Setter Property="Height" Value="48" />
+        <Setter Property="Fill" Value="#7FFFFFFF" />
+    </Style>
+
 </ResourceDictionary>

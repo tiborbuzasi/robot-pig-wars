@@ -38,19 +38,20 @@
                     <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="3*" />
-                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="6*" />
+                    <RowDefinition x:Name="RowDefiniton2" Height="6*" />
+                    <RowDefinition x:Name="RowDefiniton3" Height="8*" />
                     <RowDefinition Height="4*" />
-                    <RowDefinition Height="2*" />
                 </Grid.RowDefinitions>
 
-                <Canvas Grid.RowSpan="4" Margin="20">
-
+                <Canvas Grid.RowSpan="4" Margin="14,22">
+                    
                 </Canvas>
 
-                <GroupBox FontSize="18" Grid.Column="1" Grid.Row="0" Header=" Lives " HorizontalContentAlignment="Right" Margin="10,5" VerticalContentAlignment="Center" />
+                <Rectangle Grid.Column="1" Grid.Row="0" Style="{StaticResource OsdInfoBox}" />
+                <Label Content="Lives" Grid.Column="1" Grid.Row="0" Style="{StaticResource OsdInfoBoxTitle}" />
 
-                <GroupBox FontSize="18" Grid.Column="1" Grid.Row="1" Header=" Steps " HorizontalContentAlignment="Center" Margin="10,5" VerticalContentAlignment="Center" />
+                <local:OsdActionBox x:Name="ActionBox" Grid.Column="1" Grid.Row="1" DisplayType="OnePlayer" Player="1" />
 
                 <Canvas Grid.Column="1" Grid.Row="2" Margin="10">
                     <local:OsdArrowButton Direction="Left" Margin="0,42" MouseLeftButtonDown="OsdArrow_MouseLeftButtonUp" />
@@ -63,7 +64,7 @@
                     <local:OsdActionButton Weapon="Gun" Margin="189,58" MouseLeftButtonDown="OsdAction_MouseLeftButtonUp" />
                 </Canvas>
 
-                <Button Content="End Turn" Grid.Column="1" Grid.Row="3" FontSize="20" Margin="10" Background="#01FFFFFF" BorderThickness="0" BorderBrush="Black" />
+                <Button x:Name="ProcessButton" Click="ProcessButton_Click" Content="End Turn" Grid.Column="1" Grid.Row="3" FontSize="20" Margin="10" Background="#01FFFFFF" BorderThickness="0" BorderBrush="Black" />
             </Grid>
         </Viewbox>
     </Grid>
