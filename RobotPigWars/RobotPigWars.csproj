@@ -59,6 +59,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI\OsdLifeInfoBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI\OsdLifeBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI\Player.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GUI\OsdActionBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -91,6 +103,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GUI\Game.cs" />
+    <Compile Include="GUI\OsdLifeInfoBox.xaml.cs">
+      <DependentUpon>OsdLifeInfoBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\OsdLifeBox.xaml.cs">
+      <DependentUpon>OsdLifeBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Player.xaml.cs">
+      <DependentUpon>Player.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\OsdActionBox.xaml.cs">
       <DependentUpon>OsdActionBox.xaml</DependentUpon>
     </Compile>
@@ -109,7 +131,10 @@
     <Compile Include="GUI\OsdArrowButton.xaml.cs">
       <DependentUpon>OsdArrowButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Logic\Direction.cs" />
     <Compile Include="Logic\Action.cs" />
+    <Compile Include="Logic\Game.cs" />
+    <Compile Include="Logic\Player.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

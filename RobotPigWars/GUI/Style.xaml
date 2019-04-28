@@ -95,4 +95,37 @@
         <Setter Property="Fill" Value="#7FFFFFFF" />
     </Style>
 
+    <!-- Style for OSD Life Info Boxes -->
+    <Style x:Key="OsdLifeInfoBox" TargetType="Ellipse">
+        <Setter Property="Fill" Value="DarkGray" />
+        <Setter Property="Height" Value="60" />
+        <Setter Property="Stroke" Value="Black" />
+        <Setter Property="StrokeThickness" Value="1.5" />
+        <Setter Property="Width" Value="60" />
+    </Style>
+
+    <!-- Style for OSD Life Info Box Contents -->
+    <Style x:Key="OsdLifeInfoBoxContent" TargetType="Label">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="26" />
+        <Setter Property="Height" Value="60" />
+        <Setter Property="Width" Value="60" />
+    </Style>
+    <!-- Game Field Styles -->
+
+    <!-- Style for Gray Field Background -->
+    <Style x:Key="FieldBackGray" TargetType="Rectangle">
+        <Setter Property="Fill" Value="#1FE0E0E0" />
+    </Style>
+
+    <!-- Style for Pink Field Background -->
+    <Style x:Key="FieldBackPink" TargetType="Rectangle">
+        <Setter Property="Fill" Value="#1FE00070" />
+    </Style>
+
+    <!-- Style for Player -->
+    <Style x:Key="Player" TargetType="Ellipse">
+        <Setter Property="Fill" Value="#3FE00070" />
+    </Style>
+
 </ResourceDictionary>

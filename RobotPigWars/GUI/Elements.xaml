@@ -306,4 +306,80 @@
             </GeometryDrawing.Pen>
         </GeometryDrawing>
     </DrawingCollection>
+
+
+
+    <!-- Game Field Elements-->
+
+    <!-- Drawing for Player Face Down -->
+    <DrawingCollection x:Key="PlayerFaceDown">
+        <GeometryDrawing Brush="White" Geometry="M -60,-10 A 16,16 0 0 0 -30,-10 M -30,-10 A 75,75 0 0 0 -60,-10">
+            <GeometryDrawing.Pen>
+                <Pen Brush="Black" />
+            </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="Black" Geometry="M -47,-5 A 1,1 0 0 0 -42,-5 M -42,-5 A 1,1 0 0 0 -47,-5">
+            <GeometryDrawing.Pen>
+                <Pen Brush="Black" />
+            </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="Black" Geometry="M 60,-10 A 16,16 0 0 1 30,-10 M 30,-10 A 75,75 0 0 1 60,-10">
+            <GeometryDrawing.Pen>
+                <Pen Brush="Black" />
+            </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="Red" Geometry="M 50,-5 A 1,1 0 0 1 40,-5 M 40,-5 A 1,1 0 0 1 50,-5">
+            <GeometryDrawing.Pen>
+                <Pen Brush="DarkRed" />
+            </GeometryDrawing.Pen>
+        </GeometryDrawing>
+    </DrawingCollection>
+
+    <!-- Drawing for Player Face Up -->
+    <DrawingCollection x:Key="PlayerFaceUp">
+        <GeometryDrawing Geometry="M -2,4 A 1,1 0 0 1 -4,4 M -4,4 A 10,10 0 0 1 2,-4 M 2,-4 A 1,1 0 0 1 -4,8 M -4,8 A 10,10 0 0 1 4,-12 ">
+            <GeometryDrawing.Pen>
+                <Pen Brush="Black" Thickness="2"/>
+            </GeometryDrawing.Pen>
+        </GeometryDrawing>
+    </DrawingCollection>
+
+    <!-- Drawing for Player Face Left -->
+    <DrawingCollection x:Key="PlayerFaceLeft">
+        <GeometryDrawing Geometry="M 10,20 A 10,10 0 0 0 20,20 M 20,20 A 20,20 0 0 0 -10,-10">
+            <GeometryDrawing.Pen>
+                <Pen Brush="Black" Thickness="2"/>
+            </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="Black" Geometry="M -90,-10 A 1,1 0 0 1 -80,-10 M -80,-10 A 1,2 0 0 1 -90,-10">
+            <GeometryDrawing.Pen>
+                <Pen Brush="Black" />
+            </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="Red" Geometry="M -88,-8 A 1,1.5 0 0 1 -83,-8 M -83,-8 A 1,2 0 0 1 -88,-8">
+            <GeometryDrawing.Pen>
+                <Pen Brush="DarkRed" />
+            </GeometryDrawing.Pen>
+        </GeometryDrawing>
+    </DrawingCollection>
+
+    <!-- Drawing for Player Face Right -->
+    <DrawingCollection x:Key="PlayerFaceRight">
+        <GeometryDrawing Geometry="M -10,20 A 10,10 0 0 1 -20,20 M -20,20 A 20,20 0 0 1 10,-10">
+            <GeometryDrawing.Pen>
+                <Pen Brush="Black" Thickness="2"/>
+            </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="White" Geometry="M 90,-10 A 1,1 0 0 0 80,-10 M 80,-10 A 1,2 0 0 0 90,-10">
+            <GeometryDrawing.Pen>
+                <Pen Brush="Black" />
+            </GeometryDrawing.Pen>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="Black" Geometry="M 88,-8 A 1,1.5 0 0 1 83,-8 M 83,-8 A 1,2 0 0 1 88,-8">
+            <GeometryDrawing.Pen>
+                <Pen Brush="Black" />
+            </GeometryDrawing.Pen>
+        </GeometryDrawing>
+    </DrawingCollection>
+
 </ResourceDictionary>

@@ -30,7 +30,7 @@ namespace RobotPigWars.Logic
         public Game()
         {
             FieldSize = fieldSizes[1];
-            State = GameState.GameOver;
+            State = GameState.Input;
 
             Players = new Player[2];
             Players[0] = new Player(
@@ -42,14 +42,31 @@ namespace RobotPigWars.Logic
             );
             Players[1] = new Player(
                 numberOfLives,
-                FieldSize / 2 + 1,
-                FieldSize / 2 + 1,
+                FieldSize / 2,
+                FieldSize / 2,
                 Directions.Up,
                 Enumerable.Repeat(Actions.None, numberOfSteps).ToArray()
             );
 
             CurrentStep = 0;
             CurrentPlayer = 0;
+        }
+
+        public void SetAction(Actions action)
+        {
+            Players[CurrentPlayer].Steps[CurrentStep] = action;
+            if (CurrentStep < numberOfSteps - 1)
+            {
+                CurrentStep++;
+            }
+        }
+
+        private void ClearActions()
+        {
+            for (byte p = 0; p < numberOfPlayers; p++)
+            {
+                Players[p].Steps = Enumerable.Repeat(Actions.None, numberOfSteps).ToArray();
+            }
         }
 
         public void ProcessStep()
@@ -71,6 +88,34 @@ namespace RobotPigWars.Logic
             {
                 switch (Players[p].Steps[CurrentStep])
                 {
+                    case Actions.TurnLeft:
+                        if (Players[p].Face == Directions.Up)
+                        {
+                            Players[p].Face = Directions.Left;
+                        }
+                        else
+                        {
+                            Players[p].Face = Players[p].Face - 1;
+                        }
+                        break;
+                    case Actions.TurnRight:
+                        if (Players[p].Face == Directions.Left)
+                        {
+                            Players[p].Face = Directions.Up;
+                        }
+                        else
+                        {
+                            Players[p].Face = Players[p].Face + 1;
+                        }
+                        break;
+                }
+            }
+
+
+            for (byte p = 0; p < numberOfPlayers; p++)
+            {
+                switch (Players[p].Steps[CurrentStep])
+                {
                     case Actions.Fist:
                         ProcessAction(Players[p], CalculateFist(Players[p]));
                         break;
@@ -87,7 +132,7 @@ namespace RobotPigWars.Logic
         {
             if (movementActions.Contains(Players[0].Steps[CurrentStep]) &&
                 movementActions.Contains(Players[1].Steps[CurrentStep]) &&
-                CalculatePosition(Players[0]) == CalculatePosition(Players[1]))
+                Enumerable.SequenceEqual(CalculatePosition(Players[0]), CalculatePosition(Players[1])))
             {
                 return true;
             }
@@ -117,19 +162,19 @@ namespace RobotPigWars.Logic
             switch (player.Face)
             {
                 case Directions.Left:
-                    movement.Select(i => -i).ToArray();
+                    movement = movement.Select(i => -i).ToArray();
                     break;
                 case Directions.Down:
-                    movement.Reverse();
+                    movement = movement.Reverse().ToArray();
                     break;
                 case Directions.Up:
-                    movement.Select(i => -i).ToArray().Reverse();
+                    movement = movement.Select(i => -i).Reverse().ToArray();
                     break;
             }
 
             if (player.Steps[CurrentStep] == Actions.MoveLeft || player.Steps[CurrentStep] == Actions.MoveRight)
             {
-                movement.Select(i => -i).ToArray();
+                movement = movement.Select(i => -i).ToArray();
             }
 
             return FixPosition(new int[2] { player.Position[0] + movement[0], player.Position[1] + movement[1] });
@@ -138,19 +183,11 @@ namespace RobotPigWars.Logic
         private int[] FixPosition(int[] position)
         {
             position[0] = (position[0] < 0) ? 0 : position[0];
-            position[0] = (position[0] >= FieldSize) ? FieldSize : position[0];
+            position[0] = (position[0] >= FieldSize - 1) ? FieldSize - 1 : position[0];
             position[1] = (position[1] < 0) ? 0 : position[1];
-            position[1] = (position[1] >= FieldSize) ? FieldSize : position[1];
+            position[1] = (position[1] >= FieldSize - 1) ? FieldSize - 1 : position[1];
 
             return position;
-        }
-
-        private void CheckState()
-        {
-            if (Players.Any(p => p.Life == 0))
-            {
-                State = GameState.GameOver;
-            }
         }
 
         public void EndTurn()
@@ -158,11 +195,25 @@ namespace RobotPigWars.Logic
             switch (State)
             {
                 case GameState.Input:
+                    CurrentStep = 0;
                     CurrentPlayer++;
+                    if (CurrentPlayer == numberOfPlayers)
+                    {
+                        State = GameState.Process;
+                    }
                     break;
                 case GameState.Process:
+                    if (Players.Any(p => p.Life == 0))
+                    {
+                        State = GameState.GameOver;
+                    }
+                    else
+                    {
+                        State = GameState.Input;
+                    }
                     CurrentPlayer = 0;
-                    CheckState();
+                    CurrentStep = 0;
+                    ClearActions();
                     break;
             }
         }

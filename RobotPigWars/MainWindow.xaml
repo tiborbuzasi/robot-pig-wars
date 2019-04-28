@@ -44,16 +44,14 @@
                     <RowDefinition Height="4*" />
                 </Grid.RowDefinitions>
 
-                <Canvas Grid.RowSpan="4" Margin="14,22">
+                <Canvas x:Name="Field" Grid.RowSpan="4" Margin="14,22" Loaded="Field_Loaded">
                     
                 </Canvas>
 
-                <Rectangle Grid.Column="1" Grid.Row="0" Style="{StaticResource OsdInfoBox}" />
-                <Label Content="Lives" Grid.Column="1" Grid.Row="0" Style="{StaticResource OsdInfoBoxTitle}" />
-
                 <local:OsdActionBox x:Name="ActionBox" Grid.Column="1" Grid.Row="1" DisplayType="OnePlayer" Player="1" />
+                <local:OsdLifeBox x:Name="LifeBox" Grid.Column="1" Grid.Row="0" />
 
-                <Canvas Grid.Column="1" Grid.Row="2" Margin="10">
+                <Canvas x:Name="OsdControls" Grid.Column="1" Grid.Row="2" Margin="10">
                     <local:OsdArrowButton Direction="Left" Margin="0,42" MouseLeftButtonDown="OsdArrow_MouseLeftButtonUp" />
                     <local:OsdArrowButton Direction="Down" Margin="42,64" MouseLeftButtonDown="OsdArrow_MouseLeftButtonUp" />
                     <local:OsdArrowButton Direction="Right" Margin="64,42" MouseLeftButtonDown="OsdArrow_MouseLeftButtonUp" />

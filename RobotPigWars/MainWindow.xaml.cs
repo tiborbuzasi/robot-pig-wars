@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -22,6 +23,8 @@ namespace RobotPigWars
     /// </summary>
     public partial class MainWindow : Window
     {
+        private GUI.Game gameHandler;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -85,10 +88,12 @@ namespace RobotPigWars
             OsdActionButton Button = (OsdActionButton) sender;
             if (Button.Weapon == OsdActionButton.Weapons.Gun)
             {
+                gameHandler.GameLogic.SetAction(Actions.Gun);
                 ActionBox.SetAction(Actions.Gun);
             }
             else if (Button.Weapon == OsdActionButton.Weapons.Fist)
             {
+                gameHandler.GameLogic.SetAction(Actions.Fist);
                 ActionBox.SetAction(Actions.Fist);
             }
         }
@@ -98,10 +103,12 @@ namespace RobotPigWars
             OsdTurnButton Button = (OsdTurnButton) sender;
             if (Button.Direction == OsdTurnButton.Directions.Left)
             {
+                gameHandler.GameLogic.SetAction(Actions.TurnLeft);
                 ActionBox.SetAction(Actions.TurnLeft);
             }
             else if (Button.Direction == OsdTurnButton.Directions.Right)
             {
+                gameHandler.GameLogic.SetAction(Actions.TurnRight);
                 ActionBox.SetAction(Actions.TurnRight);
             }
         }
@@ -111,18 +118,22 @@ namespace RobotPigWars
             OsdArrowButton Button = (OsdArrowButton) sender;
             if (Button.Direction == OsdArrowButton.Directions.Up)
             {
+                gameHandler.GameLogic.SetAction(Actions.Forward);
                 ActionBox.SetAction(Actions.Forward);
             }
             else if (Button.Direction == OsdArrowButton.Directions.Down)
             {
+                gameHandler.GameLogic.SetAction(Actions.Backward);
                 ActionBox.SetAction(Actions.Backward);
             }
             else if (Button.Direction == OsdArrowButton.Directions.Left)
             {
+                gameHandler.GameLogic.SetAction(Actions.MoveLeft);
                 ActionBox.SetAction(Actions.MoveLeft);
             }
             else if (Button.Direction == OsdArrowButton.Directions.Right)
             {
+                gameHandler.GameLogic.SetAction(Actions.MoveRight);
                 ActionBox.SetAction(Actions.MoveRight);
             }
         }
@@ -137,12 +148,45 @@ namespace RobotPigWars
             {
                 Button.Image = (DrawingCollection) Application.Current.Resources["WindowMaximizeImage"];
             }
-
         }
 
         private void ProcessButton_Click(object sender, RoutedEventArgs e)
         {
-            ActionBox.DisplayType = OsdActionBox.DisplayTypes.AllPlayers;
+            gameHandler.GameLogic.EndTurn();
+            if (gameHandler.GameLogic.State == Logic.Game.GameState.Input)
+            {
+                ActionBox.Player = gameHandler.GameLogic.CurrentPlayer; ActionBox.Player++;
+                ActionBox.ResetStep();
+            }
+            else
+            {
+                gameHandler.ProcessStepInitialize();
+                ActionBox.DisplayType = OsdActionBox.DisplayTypes.AllPlayers;
+                ActionBox.Player = gameHandler.GameLogic.CurrentPlayer; ActionBox.Player++;
+                ActionBox.ResetStep();
+                ActionBox.UpdateStepMarker();
+                OsdControls.Visibility = Visibility.Collapsed;
+                RowDefiniton2.Height = new GridLength(9.0, GridUnitType.Star);
+                RowDefiniton3.Height = new GridLength(5.0, GridUnitType.Star);
+                ProcessButton.IsEnabled = false;
+            }
+        }
+
+        public void ProcessEnd()
+        {
+            gameHandler.GameLogic.EndTurn();
+            ActionBox.EndTurn();
+            ActionBox.Player = gameHandler.GameLogic.CurrentPlayer; ActionBox.Player++;
+            ActionBox.DisplayType = OsdActionBox.DisplayTypes.OnePlayer;
+            OsdControls.Visibility = Visibility.Visible;
+            RowDefiniton2.Height = new GridLength(6.0, GridUnitType.Star);
+            RowDefiniton3.Height = new GridLength(8.0, GridUnitType.Star);
+            ProcessButton.IsEnabled = true;
+        }
+
+        private void Field_Loaded(object sender, RoutedEventArgs e)
+        {
+            gameHandler = new GUI.Game();
         }
     }
 }
