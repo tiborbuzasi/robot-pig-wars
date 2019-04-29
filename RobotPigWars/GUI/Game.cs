@@ -19,21 +19,31 @@ namespace RobotPigWars.GUI
         public Logic.Game GameLogic { get; private set; }
         private Player[] players;
         private uint[] fieldElementSize;
-        public byte FieldSize { get; set; }
         private DispatcherTimer processTimer = new DispatcherTimer();
         private byte currentStepPart;
 
-        public Game()
+        public Game(byte fieldSize = 0, Logic.Game game = null)
         {
-            GameLogic = new Logic.Game();
+            if (fieldSize == 0 || !Logic.Game.fieldSizes.Contains(fieldSize))
+            {
+                fieldSize = Logic.Game.fieldSizes[1];
+            }
 
-            FieldSize = Logic.Game.fieldSizes[1];
-            fieldElementSize = new uint[2] { (uint)field.ActualWidth / FieldSize, (uint)field.ActualHeight / FieldSize };
+            if (game == null)
+            { 
+                GameLogic = new Logic.Game(fieldSize);
+            }
+            else
+            {
+                GameLogic = game;
+            }
+
+            fieldElementSize = new uint[2] { (uint) field.ActualWidth / fieldSize, (uint) field.ActualHeight / fieldSize };
             DisplayFieldBackground();
 
             players = new Player[2] {
-                new Player() { ColorIndex = 0, Direction = Directions.Down },
-                new Player() { ColorIndex = 1, Direction = Directions.Up }
+                new Player() { ColorIndex = 0, Direction = GameLogic.Players[0].Face },
+                new Player() { ColorIndex = 1, Direction = GameLogic.Players[1].Face }
             };
             UpdatePlayers();
             DisplayPlayers();
@@ -43,9 +53,9 @@ namespace RobotPigWars.GUI
         {
             field.Children.Clear();
 
-            for (byte x = 0; x < FieldSize; x++)
+            for (byte x = 0; x < GameLogic.FieldSize; x++)
             {
-                for (byte y = 0; y < FieldSize; y++)
+                for (byte y = 0; y < GameLogic.FieldSize; y++)
                 {
                     Rectangle Back = new Rectangle();
                     Back.Width = fieldElementSize[0];
@@ -89,7 +99,6 @@ namespace RobotPigWars.GUI
                 processTimer.Stop();
                 processTimer.Tick -= OnProcessStep;
                 app.ProcessEnd();
-                MessageBox.Show(currentStepPart.ToString());
                 return;
             }
 

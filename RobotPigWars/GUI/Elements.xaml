@@ -311,6 +311,15 @@
 
     <!-- Game Field Elements-->
 
+    <!-- Drawing for Player Face Base -->
+    <DrawingCollection x:Key="PlayerFaceBase">
+        <GeometryDrawing Brush="#FFE0A4C4" Geometry="M -100,0 A 100,100 0 0 1 100,0 M -100,0 A 100,100 0 0 0 100,0">
+            <GeometryDrawing.Pen>
+                <Pen Brush="Black" Thickness="3"/>
+            </GeometryDrawing.Pen>
+        </GeometryDrawing>
+    </DrawingCollection>
+
     <!-- Drawing for Player Face Down -->
     <DrawingCollection x:Key="PlayerFaceDown">
         <GeometryDrawing Brush="White" Geometry="M -60,-10 A 16,16 0 0 0 -30,-10 M -30,-10 A 75,75 0 0 0 -60,-10">

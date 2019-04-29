@@ -111,6 +111,36 @@
         <Setter Property="Height" Value="60" />
         <Setter Property="Width" Value="60" />
     </Style>
+
+    <!-- Style for OSD Process Buttons -->
+    <Style x:Key="OsdProcessButton" TargetType="Button">
+        <Setter Property="Background" Value="#01FFFFFF" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Margin" Value="10" />
+    </Style>
+
+    <!-- Style for OSD Window Labels -->
+    <Style x:Key="OsdWindowLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <!-- Style for OSD Field Size Buttons -->
+    <Style x:Key="OsdFieldSizeButton" TargetType="Button">
+        <Setter Property="Background" Value="#01FFFFFF" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Height" Value="100" />
+        <Setter Property="Margin" Value="20" />
+        <Setter Property="Width" Value="100" />
+    </Style>
+
     <!-- Game Field Styles -->
 
     <!-- Style for Gray Field Background -->

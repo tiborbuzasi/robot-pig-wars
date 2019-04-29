@@ -27,9 +27,9 @@ namespace RobotPigWars.Logic
         public byte CurrentPlayer { get; private set; }
         public Player[] Players { get; private set; }
 
-        public Game()
+        public Game(byte fieldSize)
         {
-            FieldSize = fieldSizes[1];
+            FieldSize = fieldSize;
             State = GameState.Input;
 
             Players = new Player[2];
@@ -52,6 +52,30 @@ namespace RobotPigWars.Logic
             CurrentPlayer = 0;
         }
 
+        public Game(byte fieldSize, Player[] players)
+        {
+            FieldSize = fieldSize;
+            State = GameState.Input;
+
+            Players = new Player[2];
+            Players[0] = new Player(
+                players[0].Life,
+                players[0].Position[0],
+                players[0].Position[1],
+                players[0].Face,
+                Enumerable.Repeat(Actions.None, numberOfSteps).ToArray()
+            );
+            Players[1] = new Player(
+                players[1].Life,
+                players[1].Position[0],
+                players[1].Position[1],
+                players[1].Face,
+                Enumerable.Repeat(Actions.None, numberOfSteps).ToArray()
+            );
+
+            CurrentStep = 0;
+            CurrentPlayer = 0;
+        }
         public void SetAction(Actions action)
         {
             Players[CurrentPlayer].Steps[CurrentStep] = action;

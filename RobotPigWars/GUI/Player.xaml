@@ -14,19 +14,13 @@
                         <DrawingGroup>
                             <DrawingGroup.Children>
                                 <DrawingCollection>
+                                    <DrawingGroup Children="{StaticResource PlayerFaceBase}" />
                                     <DrawingGroup>
-                                        <DrawingCollection>
-                                            <GeometryDrawing Brush="#FFE0A4C4" Geometry="M -100,0 A 100,100 0 0 1 100,0 M -100,0 A 100,100 0 0 0 100,0">
-                                                <GeometryDrawing.Pen>
-                                                    <Pen Brush="Black" Thickness="3"/>
-                                                </GeometryDrawing.Pen>
-                                            </GeometryDrawing>
-                                            <GeometryDrawing x:Name="PlayerRibbon" Brush ="DarkGray" Geometry="M -71,-70 A 100,100 0 0 0 71,-70 L 60,-80 M 60,-80 A 100,100 0 0 1 -60,-80 L -71,-70">
-                                                <GeometryDrawing.Pen>
-                                                    <Pen Brush="Black" />
-                                                </GeometryDrawing.Pen>
-                                            </GeometryDrawing>
-                                        </DrawingCollection>
+                                        <GeometryDrawing x:Name="PlayerRibbon" Brush ="DarkGray" Geometry="M -71,-70 A 100,100 0 0 0 71,-70 L 60,-80 M 60,-80 A 100,100 0 0 1 -60,-80 L -71,-70">
+                                            <GeometryDrawing.Pen>
+                                                <Pen Brush="Black" />
+                                            </GeometryDrawing.Pen>
+                                        </GeometryDrawing>
                                     </DrawingGroup>
                                     <DrawingGroup x:Name="ContentImage" Children="{Binding Image}" />
                                 </DrawingCollection>
