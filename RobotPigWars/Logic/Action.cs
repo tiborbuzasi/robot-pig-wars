@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RobotPigWars.Logic
 {
+    // Steps
     public enum Actions
     {
         None,

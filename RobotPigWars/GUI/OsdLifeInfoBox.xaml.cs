@@ -42,7 +42,7 @@ namespace RobotPigWars.GUI
         {
             InitializeComponent();
 
-            // Initializing as a not defined action
+            // Initializing
             Content.Content = Logic.Game.numberOfLives.ToString();
             Content.Style = Application.Current.Resources["OsdLifeInfoBoxContent"] as Style;
             BorderEllipse.Style = Application.Current.Resources["OsdLifeInfoBox"] as Style;

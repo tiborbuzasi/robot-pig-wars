@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RobotPigWars.Logic
 {
+    // Facing directions
     public enum Directions
     {
         Up,

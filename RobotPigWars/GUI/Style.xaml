@@ -116,7 +116,7 @@
     <Style x:Key="OsdProcessButton" TargetType="Button">
         <Setter Property="Background" Value="#01FFFFFF" />
         <Setter Property="BorderBrush" Value="Black" />
-        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderThickness" Value="2" />
         <Setter Property="FontSize" Value="20" />
         <Setter Property="Margin" Value="10" />
     </Style>
@@ -134,7 +134,7 @@
     <Style x:Key="OsdFieldSizeButton" TargetType="Button">
         <Setter Property="Background" Value="#01FFFFFF" />
         <Setter Property="BorderBrush" Value="Black" />
-        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderThickness" Value="2" />
         <Setter Property="FontSize" Value="20" />
         <Setter Property="Height" Value="100" />
         <Setter Property="Margin" Value="20" />

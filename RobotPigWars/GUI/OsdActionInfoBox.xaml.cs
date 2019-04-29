@@ -7,7 +7,7 @@ using RobotPigWars.Logic;
 namespace RobotPigWars.GUI
 {
     /// <summary>
-    /// Interaction logic for OsdActionButton.xaml
+    /// Interaction logic for OsdActionInfoBox.xaml
     /// </summary>
     public partial class OsdActionInfoBox : UserControl
     {
@@ -24,11 +24,24 @@ namespace RobotPigWars.GUI
             new PropertyMetadata(default(Actions), new PropertyChangedCallback(OnActionChanged))
         );
 
+        public byte StepIndex
+        {
+            get { return (byte) GetValue(StepIndexProperty); }
+            set { SetValue(StepIndexProperty, value); }
+        }
+
+        public static readonly DependencyProperty StepIndexProperty = DependencyProperty.Register(
+            "StepIndex",
+            typeof(byte),
+            typeof(OsdActionInfoBox),
+            new PropertyMetadata(default(byte), new PropertyChangedCallback(OnStepIndexChanged))
+        );
+
         public OsdActionInfoBox()
         {
             InitializeComponent();
 
-            // Initializing as a not defined action
+            // Initializing as a not defined step
             ContentImage.Children = new DrawingCollection();
             BorderRectangle.Style = Application.Current.Resources["OsdActionInfoBox"] as Style;
         }
@@ -67,6 +80,21 @@ namespace RobotPigWars.GUI
                 default:
                     InfoBox.ContentImage.Children = new DrawingCollection();
                     break;
+            }
+        }
+
+        private static void OnStepIndexChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
+        {
+            OsdActionInfoBox InfoBox = (OsdActionInfoBox) obj;
+            InfoBox.StepIndex = (byte) args.NewValue;
+
+            if (InfoBox.StepIndex < 0)
+            {
+                InfoBox.StepIndex = 0;
+            }
+            else if (InfoBox.StepIndex > Logic.Game.numberOfSteps - 1)
+            {
+                InfoBox.StepIndex = Logic.Game.numberOfSteps - 1;
             }
         }
     }

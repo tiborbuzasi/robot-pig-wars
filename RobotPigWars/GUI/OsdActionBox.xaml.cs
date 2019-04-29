@@ -10,7 +10,7 @@ using RobotPigWars.Logic;
 namespace RobotPigWars.GUI
 {
     /// <summary>
-    /// Interaction logic for OsdActionButton.xaml
+    /// Interaction logic for OsdActionBox.xaml
     /// </summary>
     public partial class OsdActionBox : UserControl
     {
@@ -22,14 +22,14 @@ namespace RobotPigWars.GUI
         public enum DisplayTypes { OnePlayer, AllPlayers };
 
         private OsdActionInfoBox[,] actionInfo = new OsdActionInfoBox[2, 5];
+        public byte CurrentStep { get; private set; }
+        private static Rectangle[] StepMarker = new Rectangle[2];
 
         public DisplayTypes DisplayType
         {
             get { return (DisplayTypes)GetValue(DisplayTypeProperty); }
             set { SetValue(DisplayTypeProperty, value); }
         }
-
-        public byte CurrentStep { get; private set; }
 
         public static readonly DependencyProperty DisplayTypeProperty = DependencyProperty.Register(
             "DisplayType",
@@ -51,7 +51,6 @@ namespace RobotPigWars.GUI
             new PropertyMetadata(default(byte), new PropertyChangedCallback(OnPropertyChanged))
         );
 
-        private static Rectangle[] StepMarker = new Rectangle[2];
 
         public OsdActionBox()
         {
@@ -67,10 +66,18 @@ namespace RobotPigWars.GUI
             {
                 for (byte s = 0; s < Logic.Game.numberOfSteps; s++)
                 {
-                    actionInfo[p, s] = new OsdActionInfoBox() { Action = Actions.None };
+                    actionInfo[p, s] = new OsdActionInfoBox() { Action = Actions.None ,StepIndex = s };
+                    actionInfo[p, s].MouseLeftButtonDown += OsdActionInfoBox_MouseLeftButtonUp;
+                    actionInfo[p, s].MouseLeftButtonDown += OsdActionBox_MouseLeftButtonUp;
+                    actionInfo[p, s].MouseRightButtonUp += OsdActionInfoBox_MouseRightButtonUp;
                 }
             }
             CurrentStep = 0;
+        }
+
+        private void OsdActionBox_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private static void OnPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
@@ -141,9 +148,16 @@ namespace RobotPigWars.GUI
             ActionBox.Canvas.Children.Clear();
         }
 
-        public Actions GetAction()
+        public Actions[] GetActions()
         {
-            return actionInfo[Player - 1, CurrentStep].Action;
+            Actions[] actions = new Actions[Logic.Game.numberOfSteps];
+
+            for (byte s = 0; s < Logic.Game.numberOfSteps; s++)
+            {
+                actions[s] = actionInfo[Player - 1,s].Action;
+            }
+
+            return actions;
         }
 
         public void SetAction(Actions action)
@@ -180,6 +194,24 @@ namespace RobotPigWars.GUI
         public void EndTurn()
         {
             InitializeActionInfoBoxes();
+        }
+
+        private void OsdActionInfoBox_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            OsdActionInfoBox InfoBox = (OsdActionInfoBox) sender;
+            CurrentStep = InfoBox.StepIndex;
+
+            MessageBox.Show("1");
+        }
+
+        private void OsdActionInfoBox_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+            OsdActionInfoBox InfoBox = (OsdActionInfoBox) sender;
+            CurrentStep = InfoBox.StepIndex;
+
+            SetAction(Actions.None);
+            MessageBox.Show("2");
         }
     }
 }

@@ -6,6 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="40" d:DesignWidth="40">
     <Grid>
+        <Rectangle x:Name="BorderRectangle" />
         <Image x:Name="Content" Margin="10">
             <Image.Source>
                 <DrawingImage>
@@ -15,6 +16,5 @@
                 </DrawingImage>
             </Image.Source>
         </Image>
-        <Rectangle x:Name="BorderRectangle" />
     </Grid>
 </UserControl>

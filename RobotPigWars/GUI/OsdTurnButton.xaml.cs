@@ -6,7 +6,7 @@ using System.Windows.Media;
 namespace RobotPigWars.GUI
 {
     /// <summary>
-    /// Interaction logic for OsdActionButton.xaml
+    /// Interaction logic for OsdTurnButton.xaml
     /// </summary>
     public partial class OsdTurnButton : UserControl
     {

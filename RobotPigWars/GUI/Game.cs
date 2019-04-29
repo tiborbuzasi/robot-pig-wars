@@ -14,21 +14,33 @@ namespace RobotPigWars.GUI
 {
     class Game : UserControl
     {
+        // Object for accessing MainWindow
         private static MainWindow app = Application.Current.Windows[0] as MainWindow;
+        // Object for accessing game field
         private static readonly Canvas field = app.Field;
+        
+        // Game logic object
         public Logic.Game GameLogic { get; private set; }
+
+        // GUI Player objects
         private Player[] players;
+        // Size of the drawn fields (x and y coordinates)
         private uint[] fieldElementSize;
+
+        // Timer for processing steps
         private DispatcherTimer processTimer = new DispatcherTimer();
+        // Step counter for processing steps
         private byte currentStepPart;
 
         public Game(byte fieldSize = 0, Logic.Game game = null)
         {
+            // Set field size
             if (fieldSize == 0 || !Logic.Game.fieldSizes.Contains(fieldSize))
             {
                 fieldSize = Logic.Game.fieldSizes[1];
             }
 
+            // Set game logic
             if (game == null)
             { 
                 GameLogic = new Logic.Game(fieldSize);
@@ -38,17 +50,22 @@ namespace RobotPigWars.GUI
                 GameLogic = game;
             }
 
+            // Calculate field size to draw
             fieldElementSize = new uint[2] { (uint) field.ActualWidth / fieldSize, (uint) field.ActualHeight / fieldSize };
             DisplayFieldBackground();
 
+            // Create GUI players
             players = new Player[2] {
                 new Player() { ColorIndex = 0, Direction = GameLogic.Players[0].Face },
                 new Player() { ColorIndex = 1, Direction = GameLogic.Players[1].Face }
             };
+
+            // Update and display players
             UpdatePlayers();
             DisplayPlayers();
         }
 
+        // Add field elements to canvas
         private void DisplayFieldBackground()
         {
             field.Children.Clear();
@@ -68,6 +85,7 @@ namespace RobotPigWars.GUI
             }
         }
 
+        // Add players to canvas
         private void DisplayPlayers()
         {
             for (byte p = 0; p < Logic.Game.numberOfPlayers; p++)
@@ -76,24 +94,25 @@ namespace RobotPigWars.GUI
             }
         }
 
+        // Initilaize processing of the steps
         public void ProcessStepInitialize()
         {
             currentStepPart = 0;
 
             processTimer.Interval = TimeSpan.FromSeconds(1);
-
             processTimer.Tick += OnProcessStep;
-            
-
             processTimer.Start();
         }
 
+        // Processing steps
         private void OnProcessStep(Object source, EventArgs e)
         {
+            // Check current step
             if (currentStepPart < Logic.Game.numberOfSteps * 2)
             {
                 currentStepPart++;
             }
+            // End processing
             else
             {
                 processTimer.Stop();
@@ -102,6 +121,7 @@ namespace RobotPigWars.GUI
                 return;
             }
 
+            // Update step marker
             if (currentStepPart % 2 == 1)
             {
                 GameLogic.ProcessStep();
@@ -111,11 +131,11 @@ namespace RobotPigWars.GUI
             }
         }
 
+        // Update players' position, facing direction and lives
         private void UpdatePlayers()
         {
             for (byte p = 0; p < Logic.Game.numberOfPlayers; p++)
             {
-
                 Canvas.SetLeft(players[p], GameLogic.Players[p].Position[0] * fieldElementSize[0]);
                 Canvas.SetTop(players[p], GameLogic.Players[p].Position[1] * fieldElementSize[1] - fieldElementSize[1] / 4);
 

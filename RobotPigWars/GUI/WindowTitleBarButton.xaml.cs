@@ -26,7 +26,7 @@ namespace RobotPigWars.GUI
         {
             InitializeComponent();
 
-            // Initializing as a Left arrow button
+            // Initializing
             ButtonBase.Style = Application.Current.Resources["WindowTitleBarButton"] as Style;
         }
 
