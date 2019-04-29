@@ -63,6 +63,5 @@ namespace RobotPigWars.GUI
 
             InfoBox.BorderEllipse.Fill = Player.playerColors[InfoBox.ColorIndex];
         }
-
-}
+    }
 }

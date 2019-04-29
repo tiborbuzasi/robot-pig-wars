@@ -108,7 +108,9 @@ namespace RobotPigWars.GUI
                     Canvas.SetLeft(PlayerHighlight, ActionBox.Border.Margin.Left);
                     Canvas.SetTop(PlayerHighlight, positionBaseY + p * verticalDistance - (verticalDistance - ActionBox.actionInfo[0,0].ActualHeight) / 2 + 1);
                     PlayerHighlight.Style = (Style) Application.Current.FindResource("OsdActionBoxPlayerHighlight");
-                    PlayerHighlight.Fill = GUI.Player.playerColors[p];
+                    Brush brush = new SolidColorBrush(GUI.Player.playerColors[p].Color);
+                    brush.Opacity = 0.5;
+                    PlayerHighlight.Fill = brush;
                     ActionBox.Canvas.Children.Add(PlayerHighlight);
 
                     StepMarker[p] = new Rectangle();

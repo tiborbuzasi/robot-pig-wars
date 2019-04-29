@@ -16,7 +16,7 @@ namespace RobotPigWars.GUI
         private static MainWindow app = Application.Current.Windows[0] as MainWindow;
         private static readonly Canvas field = app.Field;
 
-        public static readonly Brush[] playerColors = {
+        public static readonly SolidColorBrush[] playerColors = {
             new SolidColorBrush((Color) ColorConverter.ConvertFromString("#FF8B0000")),
             new SolidColorBrush((Color) ColorConverter.ConvertFromString("#FF00008B"))
         };
