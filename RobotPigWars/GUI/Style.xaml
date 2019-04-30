@@ -1,0 +1,161 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Window Title Bar Styles -->
+    
+    <!-- Style for the Window Title Bar -->
+    <Style x:Key="WindowTitleBarPanel" TargetType="DockPanel">
+        <Setter Property="Background" Value="#00000000" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <!-- Style for Window Title Bar Buttons -->
+    <Style x:Key="WindowTitleBarButton" TargetType="Button">
+        <Setter Property="Background" Value="#00000000" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Height" Value="24" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="5,1" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <!-- Style for Window Title Bar Separators -->
+    <Style x:Key="WindowTitleBarSeparator" TargetType="Line">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="5,1" />
+        <Setter Property="Stroke" Value="Black" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Width" Value="1" />
+        <Setter Property="Y2" Value="26" />
+    </Style>
+
+    
+    
+    <!-- OSD Styles -->
+    
+    <!-- Style for OSD Arrow Buttons' Borders -->
+    <Style x:Key="OsdArrowButtonBorder" TargetType="Polygon">
+        <Setter Property="Fill" Value="#01FFFFFF" />
+        <Setter Property="Stroke" Value="Black" />
+        <Setter Property="StrokeThickness" Value="2" />
+    </Style>
+
+    <!-- Style for OSD Turn Buttons' Borders -->
+    <Style x:Key="OsdTurnButtonBorder" TargetType="Rectangle">
+        <Setter Property="Fill" Value="#01FFFFFF" />
+        <Setter Property="Height" Value="50" />
+        <Setter Property="Stroke" Value="Black" />
+        <Setter Property="StrokeThickness" Value="2" />
+        <Setter Property="Width" Value="50" />
+    </Style>
+
+    <!-- Style for OSD Action Buttons' Borders -->
+    <Style x:Key="OsdActionButtonBorder" TargetType="Ellipse">
+        <Setter Property="Fill" Value="#01FFFFFF" />
+        <Setter Property="Height" Value="57" />
+        <Setter Property="Stroke" Value="Black" />
+        <Setter Property="StrokeThickness" Value="2" />
+        <Setter Property="Width" Value="57" />
+    </Style>
+    
+    <!-- Style for OSD Info Boxes (e.g. Lives and Steps) -->
+    <Style x:Key="OsdInfoBox" TargetType="Rectangle">
+        <Setter Property="Margin" Value="10,7" />
+        <Setter Property="Stroke" Value="Black" />
+        <Setter Property="StrokeThickness" Value="2" />
+    </Style>
+
+    <!-- Style for OSD Info Box Titles (e.g. Lives and Steps) -->
+    <Style x:Key="OsdInfoBoxTitle" TargetType="Label">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Margin" Value="17,10" />
+    </Style>
+
+    <!-- Style for OSD Action Info Boxes -->
+    <Style x:Key="OsdActionInfoBox" TargetType="Rectangle">
+        <Setter Property="Fill" Value="#01FFFFFF" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Stroke" Value="Black" />
+        <Setter Property="StrokeThickness" Value="1.5" />
+        <Setter Property="Width" Value="40" />
+    </Style>
+
+    <!-- Style for OSD Action Box Player Highlights -->
+    <Style x:Key="OsdActionBoxPlayerHighlight" TargetType="Rectangle">
+        <Setter Property="Height" Value="48" />
+        <Setter Property="Fill" Value="DarkGray" />
+    </Style>
+
+    <!-- Style for OSD Action Box Step Markers -->
+    <Style x:Key="OsdActionBoxStepMarker" TargetType="Rectangle">
+        <Setter Property="Width" Value="48" />
+        <Setter Property="Height" Value="48" />
+        <Setter Property="Fill" Value="#7FFFFFFF" />
+    </Style>
+
+    <!-- Style for OSD Life Info Boxes -->
+    <Style x:Key="OsdLifeInfoBox" TargetType="Ellipse">
+        <Setter Property="Fill" Value="DarkGray" />
+        <Setter Property="Height" Value="60" />
+        <Setter Property="Stroke" Value="Black" />
+        <Setter Property="StrokeThickness" Value="1.5" />
+        <Setter Property="Width" Value="60" />
+    </Style>
+
+    <!-- Style for OSD Life Info Box Contents -->
+    <Style x:Key="OsdLifeInfoBoxContent" TargetType="Label">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="26" />
+        <Setter Property="Height" Value="60" />
+        <Setter Property="Width" Value="60" />
+    </Style>
+
+    <!-- Style for OSD Process Buttons -->
+    <Style x:Key="OsdProcessButton" TargetType="Button">
+        <Setter Property="Background" Value="#01FFFFFF" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Margin" Value="10" />
+    </Style>
+
+    <!-- Style for OSD Window Labels -->
+    <Style x:Key="OsdWindowLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <!-- Style for OSD Field Size Buttons -->
+    <Style x:Key="OsdFieldSizeButton" TargetType="Button">
+        <Setter Property="Background" Value="#01FFFFFF" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Height" Value="100" />
+        <Setter Property="Margin" Value="20" />
+        <Setter Property="Width" Value="100" />
+    </Style>
+
+    <!-- Game Field Styles -->
+
+    <!-- Style for Gray Field Background -->
+    <Style x:Key="FieldBackGray" TargetType="Rectangle">
+        <Setter Property="Fill" Value="#1FE0E0E0" />
+    </Style>
+
+    <!-- Style for Pink Field Background -->
+    <Style x:Key="FieldBackPink" TargetType="Rectangle">
+        <Setter Property="Fill" Value="#1FE00070" />
+    </Style>
+
+    <!-- Style for Player -->
+    <Style x:Key="Player" TargetType="Ellipse">
+        <Setter Property="Fill" Value="#3FE00070" />
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.438
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotPigWars", "RobotPigWars\RobotPigWars.csproj", "{2C1B628D-8BE8-4327-9028-DC57723912BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C1B628D-8BE8-4327-9028-DC57723912BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C1B628D-8BE8-4327-9028-DC57723912BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C1B628D-8BE8-4327-9028-DC57723912BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C1B628D-8BE8-4327-9028-DC57723912BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F41C9FFE-84A1-4B8C-B432-116F4D62A517}
+	EndGlobalSection
+EndGlobal

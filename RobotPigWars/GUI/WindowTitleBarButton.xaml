@@ -1,0 +1,19 @@
+﻿<Button x:Class="RobotPigWars.GUI.WindowTitleBarButton"
+        x:Name="ButtonBase"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             d:DesignHeight="20" d:DesignWidth="20"
+        Background="Transparent">
+    <Image Height="14" HorizontalAlignment="Center" Margin="3,3,1,1" VerticalAlignment="Center" Width="14">
+        <Image.Source>
+            <DrawingImage>
+                <DrawingImage.Drawing>
+                    <DrawingGroup x:Name="ContentImage" />
+                </DrawingImage.Drawing>
+            </DrawingImage>
+        </Image.Source>
+    </Image>
+</Button>

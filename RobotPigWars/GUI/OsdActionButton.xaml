@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="RobotPigWars.GUI.OsdActionButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="50">
+    <Grid>
+        <Image x:Name="Content" Margin="10">
+            <Image.Source>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <DrawingGroup x:Name="ContentImage" Children="{Binding Image}" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Image.Source>
+        </Image>
+        <Ellipse x:Name="BorderEllipse" MouseEnter="BorderEllipse_MouseEnter" MouseLeave="BorderEllipse_MouseLeave" MouseLeftButtonDown="BorderEllipse_MouseLeftButtonDown" MouseLeftButtonUp="BorderEllipse_MouseLeftButtonUp" />
+    </Grid>
+</UserControl>

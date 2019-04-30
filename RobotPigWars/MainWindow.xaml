@@ -1,0 +1,177 @@
+﻿<Window x:Class="RobotPigWars.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RobotPigWars.GUI"
+        mc:Ignorable="d"
+        BorderBrush="Black" BorderThickness="1" Height="450" MinHeight="280" MinWidth="460" Title="Robot Pig Wars" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="800" WindowStyle="None">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <DockPanel x:Name="WindowTitleBar" Style="{StaticResource WindowTitleBarPanel}" MouseLeftButtonDown="WindowTitleBar_MouseLeftButtonDown">
+            <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right" Orientation="Horizontal">
+                <local:WindowTitleBarButton x:Name="WindowNewGameButton"  Style="{StaticResource WindowTitleBarButton}" Click="WindowNewGameButton_Click" Content="New Game" Padding="5,0"/>
+                <local:WindowTitleBarButton x:Name="WindowLoadGameButton" Click="WindowLoadGameButton_Click" Image="{StaticResource LoadGameImage}" />
+                <local:WindowTitleBarButton x:Name="WindowSaveGameButton" Click="WindowSaveGameButton_Click" Image="{StaticResource SaveGameImage}" />
+                <Line Style="{StaticResource WindowTitleBarSeparator}" />
+                <local:WindowTitleBarButton x:Name="WindowSettingsButton" Click="WindowSettingsButton_Click" Image="{StaticResource SettingsImage}" />
+                <local:WindowTitleBarButton x:Name="WindowHelpButton" Click="WindowHelpButton_Click" Image="{StaticResource HelpImage}" />
+                <Line Style="{StaticResource WindowTitleBarSeparator}" />
+                <local:WindowTitleBarButton x:Name="WindowMinimizeButton" Click="WindowMinimizeButton_Click" Image="{StaticResource WindowMinimizeImage}" />
+                <local:WindowTitleBarButton x:Name="WindowMaximizeButton" Click="WindowMaximizeButton_Click" Image="{StaticResource WindowMaximizeImage}" />
+                <local:WindowTitleBarButton x:Name="WindowCloseButton" Click="WindowCloseButton_Click" Image="{StaticResource WindowCloseImage}" />
+            </StackPanel>
+            <Image Height="32" Width="32" Margin="5,2,2,2">
+                <Image.Source>
+                    <DrawingImage>
+                        <DrawingImage.Drawing>
+                            <DrawingGroup>
+                                <DrawingGroup Children="{StaticResource PlayerFaceBase}" />
+                                <DrawingGroup Children="{StaticResource PlayerFaceDown}" />
+                            </DrawingGroup>
+
+                        </DrawingImage.Drawing>
+                    </DrawingImage>
+                </Image.Source>
+            </Image>
+
+            <Label x:Name="WindowTitle" Content="Robot Pig Wars" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,8" Height="25" VerticalAlignment="Center" VerticalContentAlignment="Center" />
+        </DockPanel>
+
+        <Viewbox x:Name="GameField" Grid.Row="1">
+            <Grid Height="405" Width="800">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*" />
+                    <RowDefinition x:Name="RowDefiniton2" Height="6*" />
+                    <RowDefinition x:Name="RowDefiniton3" Height="8*" />
+                    <RowDefinition Height="4*" />
+                </Grid.RowDefinitions>
+
+                <MediaElement x:Name="BackgroundMusic" LoadedBehavior="Manual" MediaFailed="BackgroundMusic_Failed" MediaOpened="BackgroundMusic_Opened" MediaEnded="BackgroundMusic_Opened" Source="Sounds/Werq.mp3" UnloadedBehavior="Stop" Visibility="Collapsed" Volume="0.75" />
+                <Canvas x:Name="Field" Grid.RowSpan="4" Margin="14,22" Loaded="Field_Loaded">
+                    
+                </Canvas>
+
+                <local:OsdActionBox x:Name="ActionBox" Grid.Column="1" Grid.Row="1" DisplayType="OnePlayer" Player="1" />
+                <local:OsdLifeBox x:Name="LifeBox" Grid.Column="1" Grid.Row="0" />
+
+                <Canvas x:Name="OsdControls" Grid.Column="1" Grid.Row="2" Margin="10">
+                    <local:OsdArrowButton Direction="Left" Margin="0,42" MouseLeftButtonDown="OsdArrow_MouseLeftButtonUp" />
+                    <local:OsdArrowButton Direction="Down" Margin="42,64" MouseLeftButtonDown="OsdArrow_MouseLeftButtonUp" />
+                    <local:OsdArrowButton Direction="Right" Margin="64,42" MouseLeftButtonDown="OsdArrow_MouseLeftButtonUp" />
+                    <local:OsdArrowButton Direction="Up" Margin="42,0" MouseLeftButtonDown="OsdArrow_MouseLeftButtonUp" />
+                    <local:OsdTurnButton Direction="Left" Margin="130,0" MouseLeftButtonDown="OsdTurn_MouseLeftButtonUp" />
+                    <local:OsdTurnButton Direction="Right" Margin="190,0" MouseLeftButtonDown="OsdTurn_MouseLeftButtonUp" />
+                    <local:OsdActionButton Weapon="Fist" Margin="123,58" MouseLeftButtonDown="OsdAction_MouseLeftButtonUp" />
+                    <local:OsdActionButton Weapon="Gun" Margin="189,58" MouseLeftButtonDown="OsdAction_MouseLeftButtonUp" />
+                </Canvas>
+
+                <Button x:Name="ProcessButton" Click="ProcessButton_Click" Content="End Turn" Grid.Column="1" Grid.Row="3" Style="{StaticResource OsdProcessButton}" />
+            </Grid>
+        </Viewbox>
+        <Viewbox x:Name="GameOver" Grid.Row="1" Visibility="Collapsed">
+            <Grid Height="405" Width="800">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Content="Game Over" Grid.Column="1" Style="{StaticResource OsdWindowLabel}" />
+                <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <Label Content="Congratulations!" FontSize="24" Margin="10,0" HorizontalAlignment="Center"/>
+                    <Label x:Name="GameOverLabel"  Content="The game ended!" FontSize="18" Margin="10,20" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Grid>
+        </Viewbox>
+        <Viewbox x:Name="NewGame" Grid.Row="1" Visibility="Collapsed">
+            <Grid Height="405" Width="800">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Content="New Game" Grid.Column="1" Style="{StaticResource OsdWindowLabel}" />
+                <StackPanel Grid.Column="1" Grid.Row="1">
+                    <Label Content="Select field size:" FontSize="18"  Margin="10,0,10,50"/>
+                    <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Click="FieldSizeButton_Click" Content="4 × 4" Style="{StaticResource OsdFieldSizeButton}"/>
+                        <Button Click="FieldSizeButton_Click" Content="6 × 6" Style="{StaticResource OsdFieldSizeButton}"/>
+                        <Button Click="FieldSizeButton_Click" Content="8 × 8" Style="{StaticResource OsdFieldSizeButton}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Viewbox>
+        <Viewbox x:Name="Settings" Grid.Row="1" Visibility="Collapsed">
+            <Grid Height="405" Width="800">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Content="Settings" Grid.Column="1" Style="{StaticResource OsdWindowLabel}" />
+                <StackPanel Grid.Column="1" Grid.Row="1">
+                    <GroupBox Header="Audio" Margin="15,0,15,30">
+                        <CheckBox x:Name="MusicToggleButton" Checked="Music_Checked" Content="Music" Grid.Column="1" Grid.Row="1" Margin="10" IsChecked="True" Unchecked="Music_Checked" />
+                    </GroupBox>
+                </StackPanel>
+                <Button Click="CloseButton_Click" Content="Close" Grid.Column="2" Grid.Row="2" Style="{StaticResource OsdProcessButton}" />
+            </Grid>
+        </Viewbox>
+        <Viewbox x:Name="Help" Grid.Row="1" Visibility="Collapsed">
+            <Grid Height="405" Width="800">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Content="Help" Grid.Column="1" Style="{StaticResource OsdWindowLabel}" />
+                <TextBlock Grid.Column="1" Grid.Row="1" Margin="15,0" TextAlignment="Justify" TextWrapping="Wrap">
+                    The goal of the game is to destroy your opponent's robot pig by inflicting 3 points of damage with your laser or powerful robot fist. The challenge is that you can set 5 actions to take place in every turn, but you cannot see what your opponent has chosen. The steps are evaluated at the end of each turn.<LineBreak /><LineBreak />
+                    The pigs start the game on opposite sides of the board, just to the right of the center line, facing the center of the board.<LineBreak /><LineBreak />
+                    All movement directions are relative to the direction that the pig is facing. For example, a pig facing east that moves backwards is moving west.<LineBreak /><LineBreak />
+                    The robot pigs cannot both occupy the same square on the board at the end of a move.<LineBreak />
+                    Please read the attached documentation for more information.<LineBreak /><LineBreak /><LineBreak />
+                    <Bold>Designed and written by Martin Szarvas, Mátyás Spitzner and Tibor Buzási</Bold><LineBreak />
+                    Music by Kevin MacLeod<LineBreak /><LineBreak />
+                    <Italic>Werq</Italic> Kevin MacLeod (incompetech.com)<LineBreak />
+                    Licensed under Creative Commons: By Attribution 3.0<LineBreak />
+                    <Hyperlink NavigateUri="http://creativecommons.org/licenses/by/3.0/" RequestNavigate="Hyperlink_RequestNavigate">http://creativecommons.org/licenses/by/3.0/</Hyperlink>
+                </TextBlock>
+                <Button Click="CloseButton_Click" Content="Close" Grid.Column="2" Grid.Row="2" Style="{StaticResource OsdProcessButton}" />
+            </Grid>
+        </Viewbox>
+    </Grid>
+</Window>
