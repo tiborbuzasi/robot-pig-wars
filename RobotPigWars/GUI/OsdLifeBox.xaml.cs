@@ -1,11 +1,11 @@
-﻿using System;
-using System.Timers;
-using System.Windows;
+﻿/**
+ * OSD LifeBox
+ * 
+ * Copyright © 2019 Tibor Buzási, Mátyás Spitzner, Martin Szarvas. All rights reserved.
+ * For licensing information see LICENSE in the project root folder.
+ */
+
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Shapes;
-using RobotPigWars.Logic;
 
 namespace RobotPigWars.GUI
 {

@@ -1,4 +1,8 @@
-﻿<UserControl x:Class="RobotPigWars.GUI.OsdTurnButton"
+﻿<!-- OSD Turn Button - GUI Description -->
+<!-- Copyright © 2019 Tibor Buzási, Mátyás Spitzner, Martin Szarvas -->
+<!-- For licensing information see LICENSE in the project root folder. -->
+
+<UserControl x:Class="RobotPigWars.GUI.OsdTurnButton"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 

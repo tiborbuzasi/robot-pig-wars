@@ -1,11 +1,15 @@
-﻿<Window x:Class="RobotPigWars.MainWindow"
+﻿<!-- Main Window - GUI Description -->
+<!-- Copyright © 2019 Tibor Buzási, Mátyás Spitzner, Martin Szarvas -->
+<!-- For licensing information see LICENSE in the project root folder. -->
+
+<Window x:Class="RobotPigWars.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RobotPigWars.GUI"
         mc:Ignorable="d"
-        BorderBrush="Black" BorderThickness="1" Height="450" MinHeight="280" MinWidth="460" Title="Robot Pig Wars" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="800" WindowStyle="None">
+        BorderBrush="Black" BorderThickness="1" Height="450" MinHeight="280" MinWidth="460" Title="Robot Pig Wars 0.0.2" VerticalAlignment="Center" VerticalContentAlignment="Center" Width="800" WindowStyle="None">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -162,9 +166,9 @@
                     The goal of the game is to destroy your opponent's robot pig by inflicting 3 points of damage with your laser or powerful robot fist. The challenge is that you can set 5 actions to take place in every turn, but you cannot see what your opponent has chosen. The steps are evaluated at the end of each turn.<LineBreak /><LineBreak />
                     The pigs start the game on opposite sides of the board, just to the right of the center line, facing the center of the board.<LineBreak /><LineBreak />
                     All movement directions are relative to the direction that the pig is facing. For example, a pig facing east that moves backwards is moving west.<LineBreak /><LineBreak />
-                    The robot pigs cannot both occupy the same square on the board at the end of a move.<LineBreak />
-                    Please read the attached documentation for more information.<LineBreak /><LineBreak /><LineBreak />
+                    The robot pigs cannot both occupy the same square on the board at the end of a move.<LineBreak /><LineBreak /><LineBreak />
                     <Bold>Designed and written by Martin Szarvas, Mátyás Spitzner and Tibor Buzási</Bold><LineBreak />
+                    For licensing information see LICENSE.md.<LineBreak />
                     Music by Kevin MacLeod<LineBreak /><LineBreak />
                     <Italic>Werq</Italic> Kevin MacLeod (incompetech.com)<LineBreak />
                     Licensed under Creative Commons: By Attribution 3.0<LineBreak />
