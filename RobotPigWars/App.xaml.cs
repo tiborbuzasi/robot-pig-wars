@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿/**
+ * Application
+ * 
+ * Copyright © 2019 Tibor Buzási, Mátyás Spitzner, Martin Szarvas. All rights reserved.
+ * For licensing information see LICENSE in the project root folder.
+ */
+
 using System.Windows;
 
 namespace RobotPigWars

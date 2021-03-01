@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿/**
+ * Main Window
+ * 
+ * Copyright © 2019 Tibor Buzási, Mátyás Spitzner, Martin Szarvas. All rights reserved.
+ * For licensing information see LICENSE in the project root folder.
+ */
+
 using System.Linq;
-using System.Media;
 using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Microsoft.Win32;
 using RobotPigWars.GUI;
 using RobotPigWars.Logic;
@@ -290,11 +287,11 @@ namespace RobotPigWars
                 {
                     if (gameHandler.GameLogic.Players[0].Life == 0)
                     {
-                        content.Append("Player Red");
+                        content.Append("Player Blue");
                     }
                     else
                     {
-                        content.Append("Player Blue");
+                        content.Append("Player Red");
                     }
                     content.AppendLine(" has won the game!");
                 }

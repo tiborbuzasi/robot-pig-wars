@@ -1,9 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/**
+ * Game Logic - Game
+ * 
+ * Copyright © 2019 Tibor Buzási, Mátyás Spitzner, Martin Szarvas. All rights reserved.
+ * For licensing information see LICENSE in the project root folder.
+ */
+
+using System;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RobotPigWars.Logic
 {

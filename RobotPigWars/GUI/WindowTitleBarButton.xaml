@@ -1,4 +1,8 @@
-﻿<Button x:Class="RobotPigWars.GUI.WindowTitleBarButton"
+﻿<!-- UI Window Title Bar Button - GUI Description -->
+<!-- Copyright © 2019 Tibor Buzási, Mátyás Spitzner, Martin Szarvas -->
+<!-- For licensing information see LICENSE in the project root folder. -->
+
+<Button x:Class="RobotPigWars.GUI.WindowTitleBarButton"
         x:Name="ButtonBase"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
